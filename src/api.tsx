@@ -1,9 +1,11 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:9080/api/v1',
+    baseURL: 'http://localhost:53647/api/v1',
     headers: {
         'Content-Type': 'application/json',
+        //cors
+        'Access-Control-Allow-Origin': '*',
     }
 });
 

@@ -1,5 +1,5 @@
 export default function Header() {
-    return<>
-        <h2> Header </h2>    
-    </>
+    return <div className="bg-black p-5">
+        <h2 className="text-white font-bold text-lg">LOCADORA ILUSSENCIO</h2>    
+    </div>
 }
