@@ -1,11 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:53647/api/v1',
+    //baseURL: 'https://api.srbit.com.br/locadora-api/api/v1',
+    baseURL:'http://192.168.100.27:9300/api/v1',
     headers: {
-        'Content-Type': 'application/json',
-        //cors
-        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
     }
 });
 

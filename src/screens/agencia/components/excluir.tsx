@@ -1,36 +1,27 @@
-import { useEffect, useState } from "react";
-import api from "../../../api";
+import { useState } from "react";
 
 interface Agencia {
     idAgencia: string;
     nome: string;
+    action: () => void;
 }
 
-export default function Excluir({idAgencia, nome}: Agencia) {
+export default function Excluir({idAgencia, nome, action}: Agencia) {
     const [showModal, setShowModal] = useState<boolean>(false);
-    
-    useEffect(() => {
-        console.log(showModal)
-    },[]);
 
     const handleDelete = async () => {
         console.log("ID", idAgencia)
-        const response = await api.delete(`/agencia/${idAgencia}`);
-        console.log("Response status", response.status)
-        if (response.status === 200) {
-            alert('Agência excluída com sucesso');
-        }else{
-            alert('Erro ao excluir agência');
-        }
+        action(idAgencia);
+        handleShowModal();
     }
 
     const handleShowModal = () => {
         setShowModal( !showModal );
     } 
 
-    return <div className="">
+    return <div>
         <button data-modal-target="popup-modal" onClick={() => handleShowModal()} data-modal-toggle="popup-modal" className="block text-white  bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-            Deletar
+            Apagar
         </button>
 
 
