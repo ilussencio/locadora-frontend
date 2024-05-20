@@ -1,5 +1,6 @@
 import { useState } from "react";
 import agenciaDelete from "../../../services/agencia/agenciaDelete";
+import { toast } from "react-toastify";
 
 interface Agencia {
     idAgencia: string;
@@ -16,12 +17,14 @@ export default function Excluir({idAgencia, nome}: Agencia) {
             console.log("Resultado: ", res)
             if ("error" in res && res.error) {
                 console.log(res.message);
+                toast.error(res.message);
             }
             if ("data" in res) {
                 console.log(res.data);
+                toast.success("Excluido com sucesso!");
             }
         }).catch((error) => {
-            console.log(error);
+            toast.error("Erro ao excluir!");
         });
         
         handleShowModal();
